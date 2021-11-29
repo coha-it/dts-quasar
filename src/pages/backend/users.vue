@@ -248,14 +248,14 @@
           :sort-method="customSort"
           separator="cell"
           :virtual-scroll="usersAllowed.length > 150"
-          :pagination.sync="pagination"
+          v-model:pagination="pagination"
           :loading="loading"
           :loading-text="$t('loading.text')"
           :footer-props="{
             showFirstLastPage: true,
           }"
           dense
-          :selected.sync="selected"
+          v-model:selected="selected"
           class="my-data-table"
         >
           <!-- Toolbars -->
@@ -868,8 +868,8 @@
                   user.groups_moderating && user.groups_moderating.length >= 1
                 "
               >
-                <template v-for="(group, i) in props.row.groups">
-                  <span :key="i">
+                <template v-for="(group, i) in props.row.groups" :key="i">
+                  <span>
                     <q-badge
                       v-if="
                         user.groups_moderating.find((x) => x.id === group.id)
@@ -949,8 +949,8 @@
                       <q-list subheader two-line flat>
                         <div>Nutzer ist in Gruppen:</div>
                         <template v-if="props.row.groups">
-                          <template v-for="(group, i) in props.row.groups">
-                            <div :key="group.id">
+                          <template v-for="(group, i) in props.row.groups" :key="group.id">
+                            <div>
                               <q-item>
                                 <q-item-section top avatar>
                                   <q-avatar
@@ -1027,8 +1027,9 @@
                         <template v-if="user.groups_moderating">
                           <template
                             v-for="(group, i) in user.groups_moderating"
+                            :key="group.id"
                           >
-                            <div :key="group.id">
+                            <div>
                               <q-item
                                 :disabled="
                                   alreadyInGroups(group, props.row.groups)
