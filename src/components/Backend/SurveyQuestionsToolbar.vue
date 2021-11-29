@@ -1,6 +1,6 @@
 <template lang="pug">
 div
-  q-toolbar.coha--toolbar(v-if='selected.length <= 0' :flat="pagination.search == ''" floating='' style='min-height:100px' height='auto')
+  q-toolbar.coha--toolbar(v-if='0 >= selected.length' :flat="pagination.search == ''" floating='' style='min-height:100px' height='auto')
     .row(style="width: 100%")
       q-input(v-model='pagination.search' style='max-width: 400px;' :label="$t('Search')" autocomplete='off' append-icon='search' hide-details='' outlined='')
       .col
@@ -77,6 +77,7 @@ export default {
   methods: {
 
     toLastPage: function () {
+      // eslint-disable-next-line vue/no-mutating-props
       this.pagination.page = this.getPages()
     },
 

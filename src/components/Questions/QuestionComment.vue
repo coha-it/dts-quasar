@@ -140,6 +140,7 @@ export default {
           unelevated: true
         }
       }).onOk(() => {
+        // eslint-disable-next-line vue/no-mutating-props
         this.question.users_awnser.comment = null
       }).onCancel(() => {
         // console.log('>>>> Cancel')

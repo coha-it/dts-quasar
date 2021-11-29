@@ -11,7 +11,7 @@
           @click="model[field] = ' '"
         /> -->
         <q-editor
-          v-model="model[field]"
+          v-model="getModelField"
           :disable="disable"
           :toolbar="toolbar"
           :fonts="fonts"
@@ -30,7 +30,7 @@
     </template>
     <template v-else>
       <q-input
-        v-model="model[field]"
+        v-model="getModelField"
         type="textarea"
         :disable="disable"
         dense
@@ -76,6 +76,10 @@ export default {
       type: String,
       default: 'Bitte hier Ihre Beschreibung einfügen'
     }
+  },
+
+  computed: {
+    getModelField: () => this.model[this.field]
   },
 
   data () {

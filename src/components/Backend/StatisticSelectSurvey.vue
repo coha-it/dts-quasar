@@ -14,8 +14,8 @@ div
             template(v-slot:append="")
               q-icon(name="search")
       q-separator
-      template(v-for="survey in surveys")
-        q-item(:key="survey.id", :disable="!isntSelected(survey)")
+      template(v-for="survey in surveys" :key="survey.id")
+        q-item(:disable="!isntSelected(survey)")
           q-item-section(avatar)
             q-icon(name="analytics")
           q-item-section

@@ -4,9 +4,8 @@
       <q-toolbar>
         <!-- Progress -->
         <div :class="'survey-progress-wrapper ' + (oSurvey.questions.length > 15 ? 'thin' : null)">
-          <template v-for="q in oSurvey.questions">
+          <template v-for="q in oSurvey.questions" :key="q.id">
             <span
-              :key="q.id"
               :class="getProgressClasses(oSurvey, q)"
               @click="changeQuestion(q)"
             >
@@ -60,7 +59,7 @@
                     v-if="question.max_options > 1"
                     :value="findSelectedOption(question, option) ? true : false"
                     :style="'--option-color: '+ option.color + ';'"
-                    @click.native="toggleAwnserOption(question, option)"
+                    @click="toggleAwnserOption(question, option)"
                   />
                   <!-- Single -->
                   <q-radio
@@ -69,7 +68,7 @@
                     :val="option.id"
                     selected
                     :style="'--option-color: '+ option.color + ';'"
-                    @click.native="toggleAwnserOptionSingle(question, option)"
+                    @click="toggleAwnserOptionSingle(question, option)"
                   />
                 </q-item-section>
                 <q-item-section>

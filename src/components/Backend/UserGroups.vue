@@ -1,14 +1,14 @@
 <template lang="pug">
-  UserDataModalContent(
-    s-edit-text="Gruppen Bearbeiten",
-    s-create-text="Neue Gruppe erstellen",
-    s-input-label="Gruppenname",
-    s-input-label2="Gruppenbeschreibung Öffentlich",
-    s-input-label3="Gruppenbeschreibung für Moderatoren",
-    s-parent-model="group",
-    :a-parent-models="user.groups_moderating",
-    :a-parent-headers="getParentHeaders()"
-  )
+UserDataModalContent(
+  s-edit-text="Gruppen Bearbeiten",
+  s-create-text="Neue Gruppe erstellen",
+  s-input-label="Gruppenname",
+  s-input-label2="Gruppenbeschreibung Öffentlich",
+  s-input-label3="Gruppenbeschreibung für Moderatoren",
+  s-parent-model="group",
+  :a-parent-models="user.groups_moderating",
+  :a-parent-headers="getParentHeaders()"
+)
 </template>
 <script>
 import axios from 'axios'
