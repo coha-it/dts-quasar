@@ -4,6 +4,6 @@ router-view
 
 <script>
 export default {
-  middleware: 'auth'
+  middleware: ['auth', 'isEmailUser'],
 }
 </script>
