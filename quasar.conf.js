@@ -111,7 +111,24 @@ module.exports = configure(function (ctx) {
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-framework
     framework: {
-      config: {},
+      iconSet: 'mdi-v4',
+      config: {
+        brand: {
+          'primary': '#54656C',
+          'secondary': '#9AC0C9',
+          'accent': '#E8D03E',
+          'error': '#dc6161',
+          'negative': '#dc6161',
+          'info': '#C6C6C6',
+          'success': '#55a559',
+          'green': '#55a559', // #6CAE7
+          'positive': '#55a559', // #6CAE7
+          'red': '#cf6035',
+          'orange': '#cfae35',
+          'warning': '#E6BE72',
+          'background': '#fafafa',
+        }
+      },
 
       // iconSet: 'material-icons', // Quasar icon set
       // lang: 'en-US', // Quasar language pack

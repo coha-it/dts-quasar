@@ -4,12 +4,12 @@
       <div class="top-right links">
         <template v-if="authenticated">
           <router-link :to="{ name: 'home' }">
-            {{ $t('home') }}
+            {{ $t("home") }}
           </router-link>
         </template>
         <template v-else>
           <router-link :to="{ name: 'auth' }">
-            {{ $t('entry') }}
+            {{ $t("entry") }}
           </router-link>
         </template>
       </div>
@@ -29,15 +29,15 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import Footer from '@/components/FooterGuest'
+import { mapGetters } from "vuex";
+import Footer from "@/components/FooterGuest";
 
 export default {
-  layout: 'NakedLayout',
-  middleware: 'guest',
+  layout: "NakedLayout",
+  middleware: "guest",
 
   components: {
-    Footer
+    Footer,
   },
 
   // This was causing Theme-Problems
@@ -50,13 +50,12 @@ export default {
   }),
 
   computed: mapGetters({
-    authenticated: 'auth/check'
-  })
-}
+    authenticated: "auth/check",
+  }),
+};
 </script>
 
 <style lang="scss" scoped>
-
 .welcome-layout {
   color: #636b6f;
   height: 100vh;
@@ -68,7 +67,7 @@ export default {
     padding: 0 25px;
     font-size: 12px;
     font-weight: 600;
-    letter-spacing: .1rem;
+    letter-spacing: 0.1rem;
     text-decoration: none;
     text-transform: uppercase;
   }
@@ -87,20 +86,19 @@ export default {
 }
 
 .text-center {
-    margin: auto;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    text-align: center;
-    position: absolute;
-    display: flex;
-    width: fit-content;
-    height: fit-content;
-    align-items: center;
-    justify-content: center;
-    flex-flow: column;
-    pointer-events: none;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  text-align: center;
+  position: absolute;
+  display: flex;
+  width: fit-content;
+  height: fit-content;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+  pointer-events: none;
 }
-
 </style>

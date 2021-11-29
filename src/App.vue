@@ -1,11 +1,23 @@
 <template lang="pug">
 #app
   loading(ref="loading")
-  transition(name="page", mode="out-in")
-    component(:is="layout", v-if="layout")
+  router-view(:is="layout")
 </template>
 
 <script>
+
+window.config = {
+  'appName': 'Dreamteam Survey',
+  'locale': 'de-DE',
+  'locales': {
+    'de-DE':'DE',
+    'en-EN':'EN',
+    'es-ES':'ES',
+    'zh-CN':'\u4e2d\u6587'
+  },
+  'githubAuth':null
+}
+
 import Loading from "@/components/Loading";
 
 // Load layout components dynamically.

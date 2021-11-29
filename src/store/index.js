@@ -1,7 +1,10 @@
 import { store } from 'quasar/wrappers'
 import { createStore } from 'vuex'
 
-// import example from './module-example'
+import auth from './auth'
+import lang from './lang'
+import surveys from './surveys'
+import users from './users'
 
 /*
  * If not building with SSR mode, you can
@@ -15,7 +18,10 @@ import { createStore } from 'vuex'
 export default store(function (/* { ssrContext } */) {
   const Store = createStore({
     modules: {
-      // example
+      auth,
+      lang,
+      surveys,
+      users,
     },
 
     // enable strict mode (adds overhead!)

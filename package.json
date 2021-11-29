@@ -20,6 +20,7 @@
     "pug-plain-loader": "^1.1.0",
     "qrcode.vue": "^3.3.3",
     "quasar": "^2.0.0",
+    "sass": "^1.43.5",
     "sweetalert2": "^11.2.1",
     "vform": "^2.1.2",
     "vue-i18n": "^9.0.0",

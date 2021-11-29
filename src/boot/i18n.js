@@ -1,6 +1,9 @@
 import { boot } from 'quasar/wrappers'
 import { createI18n } from 'vue-i18n/index'
 import messages from 'src/i18n'
+import lang from '@/store/lang'
+
+console.log(lang.getters.locale())
 
 export default boot(({ app }) => {
   const i18n = createI18n({

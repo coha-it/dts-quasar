@@ -5,6 +5,7 @@ export default {
   "failed": 'Action failed',
   "success": 'Action was successful',
 
+  "back": "back",
   "ok": "Ok",
   "cancel": "Cancel",
   "error_alert_title": "Oops...",
