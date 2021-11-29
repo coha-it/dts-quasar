@@ -1,28 +1,30 @@
-import { store } from 'quasar/wrappers'
-import { createStore } from 'vuex'
+import {
+  createStore
+} from 'vuex'
+import {
+  store
+} from 'quasar/wrappers'
 
-import auth from './auth'
-import lang from './lang'
-import surveys from './surveys'
-import users from './users'
 
-/*
- * If not building with SSR mode, you can
- * directly export the Store instantiation;
- *
- * The function below can be async too; either use
- * async/await or return a Promise which resolves
- * with the Store instance.
- */
+// Load store modules dynamically.
+const requireContext = require.context('./modules', false, /.*\.js$/)
 
-export default store(function (/* { ssrContext } */) {
+const modules = requireContext.keys()
+  .map(file => [file.replace(/(^.\/)|(\.js$)/g, ''), requireContext(file)])
+  .reduce((modules, [name, module]) => {
+    if (module.namespaced === undefined) {
+      module.namespaced = true
+    }
+
+    return {
+      ...modules,
+      [name]: module
+    }
+  }, {})
+
+export default store(function ( /* { ssrContext } */ ) {
   const Store = createStore({
-    modules: {
-      auth,
-      lang,
-      surveys,
-      users,
-    },
+    modules,
 
     // enable strict mode (adds overhead!)
     // for dev mode and --debug builds only
