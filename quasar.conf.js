@@ -48,7 +48,7 @@ module.exports = configure(function (ctx) {
 
     // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
     build: {
-      vueRouterMode: 'hash', // available values: 'hash', 'history'
+      vueRouterMode: 'history', // available values: 'hash', 'history'
 
       // transpile: false,
       // publicPath: '/',
@@ -78,12 +78,27 @@ module.exports = configure(function (ctx) {
       },
 
       extendWebpack (cfg, { isServer, isClient }) {
+
+        // Use @ as alias
         cfg.resolve.alias = {
           ...cfg.resolve.alias, // This adds the existing alias
 
           // Add your own alias like this
           '@': path.resolve(__dirname, '/src/'),
         }
+
+        // Implement PUG Templating Engine
+        cfg.module.rules.push({
+          enforce: 'pre',
+          test: /\.(js|vue)$/,
+          loader: 'eslint-loader',
+          exclude: /node_modules/
+        })
+        cfg.module.rules.push({
+          test: /\.pug$/,
+          loader: 'pug-plain-loader'
+        })
+
       }
     },
 
