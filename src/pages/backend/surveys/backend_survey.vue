@@ -419,14 +419,15 @@
                               size="8"
                             >
                               <q-btn
-                                slot="avatar"
                                 disable
                                 flat
                                 round
                                 readonly
                                 unelevated
                                 icon="timer"
-                              />
+                              >
+                                <slot name="avatar" />
+                              </q-btn>
                             </q-chat-message>
                           </div>
                         </div>
@@ -506,12 +507,12 @@
                       multi-sort
                       selection="multiple"
                       show-select
-                      :selected.sync="selected"
+                      v-model:selected="selected"
                       show-expand
-                      :expanded.sync="expanded"
+                      v-model:expanded="expanded"
                       :sort-by="['order']"
                       :sort-desc="[false]"
-                      :pagination.sync="pagination"
+                      v-model:pagination="pagination"
                       :hide-pagination="true"
                       class="my-data-table f-height questions-table"
                     >
@@ -830,7 +831,7 @@
 
                                         <q-separator inset="item" />
 
-                                        <template v-show="props.row.is_commentable">
+                                        <template v-if="props.row.is_commentable">
                                           <q-item>
                                             <q-item-section side top>
                                               <q-checkbox
@@ -1132,7 +1133,7 @@
 
                                               <q-table
                                                 v-model="aSelectedOptions"
-                                                :selected.sync="aSelectedOptions"
+                                                v-model:selected="aSelectedOptions"
                                                 :columns="aOptionHeaders"
                                                 :data="props.row.options"
                                                 dense
@@ -1146,7 +1147,7 @@
                                                 :footer-props="{
                                                   showFirstLastPage: true,
                                                 }"
-                                                :pagination.sync="oOptionsPagination"
+                                                v-model:pagination="oOptionsPagination"
                                                 class="my-data-table f-height options-table"
                                               >
                                                 <template v-slot:header-cell-order="props">

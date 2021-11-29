@@ -38,7 +38,7 @@
         }"
         :sort-by="['id']"
         :sort-desc="true"
-        :pagination.sync="pagination"
+        v-model:pagination="pagination"
         dense
       >
         <template v-slot:body-cell="props">
